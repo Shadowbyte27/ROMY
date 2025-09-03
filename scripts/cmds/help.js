@@ -20,27 +20,27 @@ module.exports = {
   langs: {
     en: {
       helpHeader: "╔══════════◇◆◇══════════╗\n"
-                + "      BOT COMMAND LIST\n"
+                + "      『🎧এꔰꜛ.𝗥𝗢𝗠𝗘𝗢𝗕𝗢𝗧.ꜛꗄꔰ🪶🧘🏻‍♂️』\n"
                 + "╠══════════◇◆◇══════════╣",
       categoryHeader: "\n   ┌────── {category} ──────┐\n",
-      commandItem: "║ │ 🟢 {name}",
+      commandItem: "║ │ 🎧 {name}"🪶🧘🏻‍♂️,
       helpFooter: "║ └─────────────────┘\n"
                 + "╚══════════◇◆◇══════════╝",
       commandInfo: "╔══════════◇◆◇══════════╗\n"
                  + "║           COMMAND INFORMATION      \n"
                  + "╠══════════◇◆◇══════════╣\n"
-                 + "║ 🏷️ Name: {name}\n"
-                 + "║ 📝 Description: {description}\n"
-                 + "║ 📂 Category: {category}\n"
-                 + "║ 🔤 Aliases: {aliases}\n"
-                 + "║ 🏷️ Version: {version}\n"
-                 + "║ 🔒 Permissions: {role}\n"
-                 + "║ ⏱️ Cooldown: {countDown}s\n"
-                 + "║ 🔧 Use Prefix: {usePrefix}\n"
-                 + "║ 👤 Author: {author}\n"
+                 + "║ 🎧🏷️ Name: {name}\n"🪶🧘🏻‍♂️
+                 + "║ 🎧📝 Description: {description}\n"🪶🧘🏻‍♂️
+                 + "║ 🎧📂 Category: {category}\n"🪶🧘🏻‍♂️
+                 + "║ 🎧🔤 Aliases: {aliases}\n"🪶🧘🏻‍♂️
+                 + "║ 🎧🏷️ Version: {version}\n"🪶🧘🏻‍♂️
+                 + "║ 🎧🔒 Permissions: {role}\n"🪶🧘🏻‍♂️
+                 + "║ 🎧⏱️ Cooldown: {countDown}s\n"🪶🧘🏻‍♂️
+                 + "║ 🎧🔧 Use Prefix: {usePrefix}\n"🪶🧘🏻‍♂️
+                 + "║ 🎧👤 Author: {author}\n"🪶🧘🏻‍♂️
                  + "╠══════════◇◆◇══════════╣",
-      usageHeader: "║ 🛠️ USAGE GUIDE",
-      usageBody: " ║ {usage}",
+      usageHeader: "║ 🎧🛠️ USAGE GUIDE"🪶🧘🏻‍♂️,
+      usageBody: " ║🎧 {usage}"🪶🧘🏻‍♂️,
       usageFooter: "╚══════════◇◆◇══════════╝",
       commandNotFound: "⚠️ Command '{command}' not found!",
       doNotHave: "None",
