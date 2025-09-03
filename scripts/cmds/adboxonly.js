@@ -21,18 +21,20 @@ module.exports = {
 
 	langs: {
 		vi: {
-			turnedOn: "Đã bật chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot",
-			turnedOff: "Đã tắt chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot",
-			turnedOnNoti: "Đã bật thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
-			turnedOffNoti: "Đã tắt thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
-			syntaxError: "Sai cú pháp, chỉ có thể dùng {pn} on hoặc {pn} off"
+			turnedOn: "🎧☑️ Mode admin only activé ! 🪶🧘🏻‍♂️",
+			turnedOff: "🎧☑️ Mode admin only désactivé ! 🪶🧘🏻‍♂️",
+			turnedOnNoti: "🎧☑️ Notification pour les non-admins activée ! 🪶🧘🏻‍♂️",
+			turnedOffNoti: "🎧☑️ Notification pour les non-admins désactivée ! 🪶🧘🏻‍♂️",
+			syntaxError: "🎧❌ Syntaxe incorrecte, utilise {pn} on ou {pn} off 🪶🧘🏻‍♂️",
+			notAdmin: "🎧❌ Désolé… Seul l'Empereur Romeo et ses admin privilégiés peuvent utiliser le bot ! 😏🪶🧘🏻‍♂️\nFais une offrande, peut-être qu’il t’accordera sa bénédiction ! 👑"
 		},
 		en: {
-			turnedOn: "Turned on the mode only admin of group can use bot",
-			turnedOff: "Turned off the mode only admin of group can use bot",
-			turnedOnNoti: "Turned on the notification when user is not admin of group use bot",
-			turnedOffNoti: "Turned off the notification when user is not admin of group use bot",
-			syntaxError: "Syntax error, only use {pn} on or {pn} off"
+			turnedOn: "🎧☑️ Admin-only mode enabled! 🪶🧘🏻‍♂️",
+			turnedOff: "🎧☑️ Admin-only mode disabled! 🪶🧘🏻‍♂️",
+			turnedOnNoti: "🎧☑️ Notification for non-admins enabled! 🪶🧘🏻‍♂️",
+			turnedOffNoti: "🎧☑️ Notification for non-admins disabled! 🪶🧘🏻‍♂️",
+			syntaxError: "🎧❌ Syntax error, only use {pn} on or {pn} off 🪶🧘🏻‍♂️",
+			notAdmin: "🎧❌ Sorry... Only Emperor Romeo and his chosen admins can use the bot! 😏🪶🧘🏻‍♂️\nMake an offering, maybe he’ll bless you! 👑"
 		}
 	},
 
@@ -61,5 +63,14 @@ module.exports = {
 			return message.reply(value ? getLang("turnedOnNoti") : getLang("turnedOffNoti"));
 		else
 			return message.reply(value ? getLang("turnedOn") : getLang("turnedOff"));
+	},
+
+	// Optionally, export the "notAdmin" message for use elsewhere if needed
+	notAdminMessage: function (lang) {
+		const langs = {
+			vi: "🎧❌ Désolé… Seul l'Empereur Romeo et ses admin privilégiés peuvent utiliser le bot ! 😏🪶🧘🏻‍♂️\nFais une offrande, peut-être qu’il t’accordera sa bénédiction ! 👑",
+			en: "🎧❌ Sorry... Only Emperor Romeo and his chosen admins can use the bot! 😏🪶🧘🏻‍♂️\nMake an offering, maybe he’ll bless you! 👑"
+		};
+		return langs[lang] || langs.en;
 	}
 };
