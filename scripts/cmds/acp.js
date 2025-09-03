@@ -8,8 +8,8 @@ module.exports = {
     author: "xnil6x",
     countDown: 8,
     role: 2,
-    shortDescription: "Manage friend requests stylishly",
-    longDescription: "Accept or reject friend requests with a sleek interface",
+    shortDescription: "Gère les demandes d'amis avec style",
+    longDescription: "Accepte ou refuse les demandes d'amis avec une interface élégante",
     category: "Utility",
     guide: {
       en: "{pn} [add|del] [number|all]"
@@ -49,7 +49,7 @@ module.exports = {
       form.doc_id = "4108254489275063";
     }
     else {
-      return api.sendMessage("❌ Invalid command. Usage: <add|del> <number|all>", event.threadID, event.messageID);
+      return api.sendMessage(`🎧❌ Commande invalide. Utilisation : <add|del> <number|all> 🪶🧘🏻‍♂️`, event.threadID, event.messageID);
     }
 
     let targetIDs = args.slice(1);
@@ -64,7 +64,7 @@ module.exports = {
     for (const stt of targetIDs) {
       const user = listRequest[parseInt(stt) - 1];
       if (!user) {
-        failed.push(`🚫 Can't find request #${stt}`);
+        failed.push(`🎧❌ Demande #${stt} introuvable 🪶🧘🏻‍♂️`);
         continue;
       }
       form.variables.input.friend_requester_id = user.node.id;
@@ -79,25 +79,25 @@ module.exports = {
     results.forEach((result, index) => {
       const user = newTargetIDs[index];
       if (result.status === "fulfilled" && !JSON.parse(result.value).errors) {
-        success.push(`✅ ${user.node.name} (${user.node.id})`);
+        success.push(`🎧☑️ ${user.node.name} (${user.node.id}) accepté(e) 🪶🧘🏻‍♂️`);
       } else {
-        failed.push(`❌ ${user.node.name} (${user.node.id})`);
+        failed.push(`🎧❌ ${user.node.name} (${user.node.id}) refusé(e) 🪶🧘🏻‍♂️`);
       }
     });
 
     let replyMsg = "";
     if (success.length > 0) {
-      replyMsg += `✨ Successfully ${args[0] === 'add' ? 'accepted' : 'rejected'} ${success.length} request(s):\n${success.join("\n")}\n\n`;
+      replyMsg += `🎧☑️ ${success.length} demande(s) ${args[0] === 'add' ? "acceptée(s)" : "refusée(s)"} 🪶🧘🏻‍♂️\n${success.join("\n")}\n\n`;
     }
     if (failed.length > 0) {
-      replyMsg += `⚠️ Failed to process ${failed.length} request(s):\n${failed.join("\n")}`;
+      replyMsg += `🎧❌ ${failed.length} demande(s) non traitée(s) 🪶🧘🏻‍♂️\n${failed.join("\n")}`;
     }
 
     if (replyMsg) {
       api.sendMessage(replyMsg, event.threadID, event.messageID);
     } else {
       api.unsendMessage(messageID);
-      api.sendMessage("❌ No valid requests were processed.", event.threadID);
+      api.sendMessage(`🎧❌ Aucune demande valide n'a été traitée 🪶🧘🏻‍♂️`, event.threadID);
     }
 
     api.unsendMessage(messageID);
@@ -117,23 +117,23 @@ module.exports = {
       const listRequest = JSON.parse(response).data.viewer.friending_possibilities.edges;
       
       if (!listRequest || listRequest.length === 0) {
-        return api.sendMessage("🌟 You have no pending friend requests!", event.threadID);
+        return api.sendMessage(`🎧☑️ Tu n'as aucune demande d'ami en attente 🪶🧘🏻‍♂️`, event.threadID);
       }
 
-      let msg = "📩 Pending Friend Requests:\n\n";
+      let msg = `🎧☑️ Demandes d'amis en attente 🪶🧘🏻‍♂️:\n\n`;
       listRequest.forEach((user, index) => {
-        msg += `🔹 ${index + 1}. ${user.node.name}\n`;
+        msg += `🎧☑️ ${index + 1}. ${user.node.name}\n`;
         msg += `   🆔: ${user.node.id}\n`;
         msg += `   🔗: ${user.node.url.replace("www.facebook", "fb")}\n`;
-        msg += `   ⏰: ${moment(user.time * 1009).tz("Asia/Manila").format("DD/MM/YYYY HH:mm:ss")}\n\n`;
+        msg += `   ⏰: ${moment(user.time * 1009).tz("Europe/Paris").format("DD/MM/YYYY HH:mm:ss")}\n\n`;
       });
 
-      msg += "💡 Reply with:\n"
-           + "• 'add <number>' to accept a request\n"
-           + "• 'del <number>' to reject a request\n"
-           + "• 'add all' to accept all\n"
-           + "• 'del all' to reject all\n\n"
-           + "⏳ This menu will auto-delete in 2 minutes";
+      msg += "🎧☑️ Réponds avec 🪶🧘🏻‍♂️:\n"
+           + "• 'add <number>' pour accepter\n"
+           + "• 'del <number>' pour refuser\n"
+           + "• 'add all' pour tout accepter\n"
+           + "• 'del all' pour tout refuser\n\n"
+           + "⏳ Ce menu s'auto-supprime dans 2 minutes 🪶🧘🏻‍♂️";
 
       api.sendMessage(msg, event.threadID, (e, info) => {
         global.GoatBot.onReply.set(info.messageID, {
@@ -149,7 +149,7 @@ module.exports = {
 
     } catch (error) {
       console.error(error);
-      api.sendMessage("❌ An error occurred while fetching friend requests.", event.threadID);
+      api.sendMessage(`🎧❌ Erreur lors de la récupération des demandes d'amis 🪶🧘🏻‍♂️`, event.threadID);
     }
   }
 };
