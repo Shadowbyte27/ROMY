@@ -14,10 +14,10 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Bạn chưa đăng nhập"
+					message: "🎧❌ Oups ! Tu n’es pas connecté… La magie ne fonctionne que pour les initiés🪶🧘🏻‍♂️ !"
 				});
 
-			req.flash("errors", { msg: "You must be logged in" });
+			req.flash("errors", { msg: "🔒 Connecte-toi, aventurier ! La porte secrète ne s’ouvre qu’aux héros loggés." });
 			res.redirect(`/login?redirect=${req.originalUrl}`);
 		},
 
@@ -29,7 +29,7 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Đã xảy ra lỗi"
+					message:"🎧✨ Mais tu es déjà dans la partie ! Pas besoin d’en mettre une deuxième couche🪶🧘🏻‍♂️."
 				});
 
 			res.redirect("/");
@@ -43,10 +43,10 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Bạn chưa xác thực id Facebook"
+					message: "🕵️‍♂️🔍 L’ID Facebook est manquant ! Mission impossible sans ton identité secrète🪶🧘🏻‍♂️."
 				});
 
-			req.flash("errors", { msg: "Bạn cần phải xác thực id facebook trước khi thực hiện hành động này" });
+			req.flash("errors", { msg: "🕵️‍♂️ Tu dois valider ton ID Facebook avant de partir à l’aventure ici !" });
 			res.redirect(`/verifyfbid?redirect=${req.originalUrl}`);
 		},
 
@@ -58,7 +58,7 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Đã xảy ra lỗi, vui lòng thử lại"
+					message: "⏳🛑 Patience, jeune padawan ! Ton compte attend encore le signal des étoiles🪶🧘🏻‍♂️."
 				});
 
 			res.redirect("/register");
@@ -74,10 +74,10 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 					return res.status(401).send({
 						status: "error",
 						error: "PERMISSION_DENIED",
-						message: "Không tìm thấy nhóm này"
+						message: "📡❓ Ce groupe est introuvable… Serait-il caché dans une autre dimension🪶🧘🏻‍♂️ ?"
 					});
 
-				req.flash("errors", { msg: "Thread not found" });
+				req.flash("errors", { msg: "🎧❌👻 Ce groupe n’existe pas, ou alors il est invisible 🪶🧘🏻‍♂️!" });
 				return res.redirect("/dashboard");
 			}
 
@@ -87,10 +87,10 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 					return res.status(401).send({
 						status: "error",
 						error: "PERMISSION_DENIED",
-						message: "Bạn không phải là thành viên nhóm này"
+						message: "🎧❌🙅‍♂️ Tu n’as pas la clé magique pour ce groupe. Rejoins-le ou demande à Gandalf🪶🧘🏻‍♂️ !"
 					});
 
-				req.flash("errors", { msg: "Bạn không ở trong nhóm chat này" });
+				req.flash("errors", { msg: "🚷 Tu n’es pas dans ce groupe… Impossible de rentrer sans le badge VIP !" });
 				return res.redirect("/dashboard");
 			}
 			req.threadData = threadData;
@@ -106,11 +106,11 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 				return res.status(401).send({
 					status: "error",
 					error: "PERMISSION_DENIED",
-					message: "Bạn không có quyền chinh sửa nhóm này"
+					message: "🎧❌ Pas assez de points charisme pour modifier ce groupe🪶🧘🏻‍♂️ !"
 				});
 
 			req.flash("errors", {
-				msg: "[!] Chỉ quản trị viên của nhóm chat hoặc những thành viên được cho phép mới có thể chỉnh sửa dashboard"
+				msg: "🎧👑 Seuls les admins ou les membres élus au Panthéon peuvent bidouiller ce dashboard🪶🧘🏻‍♂️ !"
 			});
 			return res.redirect("/dashboard");
 		},
@@ -122,10 +122,10 @@ module.exports = function (checkAuthConfigDashboardOfThread) {
 					return res.status(401).send({
 						status: "error",
 						error: "PERMISSION_DENIED",
-						message: "Bạn không phải là admin của bot"
+						message: "🎧❌ Seuls le boss এꔰꜛ.`EMPEREUR👑ROMEO`.ꜛꗄꔰ a accès à cette fonction tu n'es qu'un simple sujet reste à ta place gamin(e)🚮🪶🧘🏻‍♂️ !"
 					});
 
-				req.flash("errors", { msg: "Bạn không phải là admin của bot" });
+				req.flash("errors", { msg: "🎧❌Tu n’es pas admin. Il te faudrait la baguette magique de ton village 🪶🧘🏻‍♂️!" });
 				return res.redirect("/dashboard");
 			}
 			next();
